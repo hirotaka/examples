@@ -1,6 +1,6 @@
 {
-  "name": "supabase-vue",
-  "version": "0.0.0",
+  "name": "supabase-vue-auth",
+  "version": "acedax-0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -8,15 +8,22 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.28.2",
-    "eslint": "^8.4.0",
     "vue": "^3.2.16",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
     "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^9.1.0",
     "autoprefixer": "^10.4.0",
+    "eslint": "^8.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.2.0",
     "postcss": "^8.4.4",
+    "prettier": "^2.5.1",
     "tailwindcss": "^2.2.19",
     "typescript": "^4.4.3",
     "vite": "^2.6.4",
