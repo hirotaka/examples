@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { useUser } from '@/contexts/user'
 
 export default function Account() {
-  const { logout, user } = useUser()
+  const { logout, user, loading, updateProfile } = useUser()
+  const [name, setName] = useState(user.name)
 
   return (
     <div className="max-w-md mx-auto">
@@ -12,6 +14,23 @@ export default function Account() {
           ログアウト
         </button>
       </div>
+      <div className="mb-4">
+        <label className="block mb-2">名前</label>
+        <input
+          id="name"
+          className="w-full"
+          type="text"
+          value={name || ''}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <button
+        className="primary mb-4 mr-4"
+        onClick={() => updateProfile({ name })}
+        disabled={loading}
+      >
+        {loading ? '読み込み中...' : '更新'}
+      </button>
     </div>
   )
 }

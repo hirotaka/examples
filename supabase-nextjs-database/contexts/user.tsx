@@ -32,11 +32,41 @@ const Provider = ({ children }) => {
     setUser(null)
   }
 
+  async function updateProfile({ name }) {
+    try {
+      setLoading(true)
+      const user = supabase.auth.user()
+
+      const updates = {
+        id: user.id,
+        name,
+        updated_at: new Date(),
+      }
+
+      const { data: profile, error } = await supabase
+        .from('profiles')
+        .upsert(updates)
+        .single()
+
+      if (error) {
+        throw error
+      } else {
+        alert('プロフィールを更新しました！')
+        setUser({ ...user, ...profile })
+      }
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const exposed = {
     login,
     logout,
     user,
     loading,
+    updateProfile,
   }
 
   return <Context.Provider value={exposed}>{children}</Context.Provider>
