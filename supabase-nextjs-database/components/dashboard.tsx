@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { useUser } from '@/contexts/user'
 
 export default function Account() {
-  const { logout, user, loading, updateProfile } = useUser()
+  const { logout, user, loading, updateProfile, message } = useUser()
   const [name, setName] = useState(user.name)
 
   return (
     <div className="max-w-md mx-auto">
       <h1 className="text-2xl mb-4">ダッシュボード</h1>
       <div className="mb-4">
-        <p className="mb-2">Hello, {user.email}!</p>
+        <p className="mb-2">{message}</p>
         <button className="secondary" onClick={() => logout()}>
           ログアウト
         </button>

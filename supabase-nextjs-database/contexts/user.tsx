@@ -6,6 +6,15 @@ const Context = createContext()
 const Provider = ({ children }) => {
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState()
+
+  useEffect(() => {
+    const rpcHello = async () => {
+      const { data } = await supabase.rpc('hello_world')
+      setMessage(data)
+    }
+    if (user) rpcHello()
+  }, [user])
 
   useEffect(() => {
     setUser(supabase.auth.user())
@@ -67,6 +76,7 @@ const Provider = ({ children }) => {
     user,
     loading,
     updateProfile,
+    message,
   }
 
   return <Context.Provider value={exposed}>{children}</Context.Provider>
