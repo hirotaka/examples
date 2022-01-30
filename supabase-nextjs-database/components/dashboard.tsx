@@ -4,6 +4,11 @@ import { useUser } from '@/contexts/user'
 export default function Account() {
   const { logout, user, loading, updateProfile, message } = useUser()
   const [name, setName] = useState(user.name)
+  const [clicked, setClicked] = useState(0)
+
+  const incrementCount = () => {
+    setClicked(clicked + 1)
+  }
 
   return (
     <div className="max-w-md mx-auto">
@@ -30,6 +35,15 @@ export default function Account() {
         >
           {loading ? '読み込み中...' : '更新'}
         </button>
+      </div>
+      <div className="mt-6">
+        <label className="block">カウンター</label>
+        <div className="mt-2 flex items-center">
+          <p>{clicked}回</p>
+          <button className="secondary ml-4" onClick={incrementCount}>
+            クリック
+          </button>
+        </div>
       </div>
     </div>
   )
