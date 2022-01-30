@@ -7,30 +7,30 @@ export default function Account() {
 
   return (
     <div className="max-w-md mx-auto">
-      <h1 className="text-2xl mb-4">ダッシュボード</h1>
-      <div className="mb-4">
-        <p className="mb-2">{message}</p>
-        <button className="secondary" onClick={() => logout()}>
+      <h1 className="text-2xl">ダッシュボード</h1>
+      <div className="mt-6">
+        <p>{message}</p>
+        <button className="secondary mt-4" onClick={() => logout()}>
           ログアウト
         </button>
       </div>
-      <div className="mb-4">
-        <label className="block mb-2">名前</label>
+      <div className="mt-6">
+        <label className="block">名前</label>
         <input
           id="name"
-          className="w-full"
+          className="w-full mt-2"
           type="text"
           value={name || ''}
           onChange={(e) => setName(e.target.value)}
         />
+        <button
+          className="primary mt-4 mr-4"
+          onClick={() => updateProfile({ name })}
+          disabled={loading}
+        >
+          {loading ? '読み込み中...' : '更新'}
+        </button>
       </div>
-      <button
-        className="primary mb-4 mr-4"
-        onClick={() => updateProfile({ name })}
-        disabled={loading}
-      >
-        {loading ? '読み込み中...' : '更新'}
-      </button>
     </div>
   )
 }

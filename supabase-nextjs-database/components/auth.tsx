@@ -7,26 +7,26 @@ export default function Auth() {
 
   return (
     <div className="max-w-md mx-auto">
-      <h1 className="text-2xl mb-2">ログイン</h1>
-      <p className="mb-4">
+      <h1 className="text-2xl">ログイン</h1>
+      <p className="mt-4">
         Eメールを入力してマジック・リンクでログインします。
       </p>
-      <div className="mb-4">
-        <label className="block mb-2">Eメール</label>
+      <div className="mt-6">
+        <label className="block">Eメール</label>
         <input
-          className="w-full"
+          className="mt-2 w-full"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <button
+          className="primary mt-4"
+          onClick={() => login(email)}
+          disabled={loading}
+        >
+          {loading ? '読み込み中...' : 'マジックリンクを送信'}
+        </button>
       </div>
-      <button
-        className="primary mt-4"
-        onClick={() => login(email)}
-        disabled={loading}
-      >
-        {loading ? '読み込み中...' : 'マジックリンクを送信'}
-      </button>
     </div>
   )
 }
