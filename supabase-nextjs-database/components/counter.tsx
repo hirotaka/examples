@@ -29,7 +29,8 @@ export default function Counter() {
   }, [user])
 
   const incrementCount = async () => {
-    setClicked(clicked + 1)
+    const { data } = await supabase.rpc('increment_clicks')
+    setClicked(data)
   }
 
   return (
