@@ -2,6 +2,7 @@ import { useUser } from '@/contexts/user'
 import Message from '@/components/message'
 import Profile from '@/components/profile'
 import Counter from '@/components/counter'
+import Kanye from '@/components/kanye'
 
 export default function Dashboard() {
   const { logout } = useUser()
@@ -10,6 +11,7 @@ export default function Dashboard() {
     <div className="max-w-md mx-auto">
       <h1 className="text-2xl">ダッシュボード</h1>
       <Message />
+      <Kanye />
       <Profile />
       <Counter />
       <div className="mt-6">
