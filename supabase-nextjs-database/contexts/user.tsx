@@ -8,11 +8,36 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setUser(supabase.auth.user())
+    setProfile(supabase.auth.user())
     supabase.auth.onAuthStateChange(() => {
-      setUser(supabase.auth.user())
+      setProfile(supabase.auth.user())
     })
   }, [])
+
+  const setProfile = async (user) => {
+    if (!user) {
+      setUser(null)
+      return
+    }
+
+    try {
+      setLoading(true)
+      const { data: profile, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .single()
+
+      if (error) {
+        throw error
+      } else {
+        setUser({ ...user, ...profile })
+      }
+    } catch (error) {
+      console.error(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const login = async (email) => {
     try {
