@@ -1,8 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useUser } from '@/contexts/user'
+import { supabase } from '@/lib/supabase-client'
 
 export default function Counter() {
   const [clicked, setClicked] = useState(0)
   const [loading, setLoading] = useState()
+  const { user } = useUser()
+
+  useEffect(() => {
+    if (user) setClicked(user.profile.clicks)
+  }, [user])
 
   const incrementCount = async () => {
     setClicked(clicked + 1)
