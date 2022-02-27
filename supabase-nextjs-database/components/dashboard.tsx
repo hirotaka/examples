@@ -1,4 +1,5 @@
 import { useUser } from '@/contexts/user'
+import Profile from '@/components/profile'
 
 export default function Dashboard() {
   const { logout, user } = useUser()
@@ -9,6 +10,7 @@ export default function Dashboard() {
       <div className="mt-6">
         <p>Hello, {user.email}!</p>
       </div>
+      <Profile />
       <div className="mt-6">
         <button className="secondary" onClick={() => logout()}>
           ログアウト
