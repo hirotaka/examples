@@ -1,2 +1,7 @@
 tmp
 .log
+
+# Supabase
+**/supabase/.branches
+**/supabase/.temp
+**/supabase/.env
