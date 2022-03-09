@@ -26,7 +26,7 @@ export default function Kanye() {
 
   return (
     <div className="mt-6">
-      <label className="block">Kanye</label>
+      <label className="block">Kanye Quote</label>
       <p className="mt-2">{loading ? '読み込み中...' : quote}</p>
     </div>
   )
